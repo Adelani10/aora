@@ -1,16 +1,38 @@
-import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  Alert,
+  Image,
+} from "react-native";
 import React from "react";
 import FormField from "../../components/formField";
 import { images } from "../../constants";
 import { useState } from "react";
 import CustomButton from "../../components/customButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { signIn } from "../../lib/appwrite";
 
 const SignIn = () => {
-  const [value, setValue] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = async () => {};
+  const submit = async () => {
+    if (!form.email || !form.password) {
+      Alert.alert("Error", "Please fill in all the fields");
+    }
+    setIsSubmitting(true);
+    try {
+      const result = await signIn(form.email, form.password);
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <SafeAreaView className="bg-primary h-full justify-center items-start">
       <ScrollView className="w-full">
@@ -27,10 +49,10 @@ const SignIn = () => {
 
           <FormField
             title="Email"
-            value={value.email}
+            value={form.email}
             handleChangeText={(e) =>
-              setValue({
-                ...value,
+              setForm({
+                ...form,
                 email: e,
               })
             }
@@ -39,10 +61,10 @@ const SignIn = () => {
 
           <FormField
             title="Password"
-            value={value.password}
+            value={form.password}
             handleChangeText={(e) =>
-              setValue({
-                ...value,
+              setForm({
+                ...form,
                 password: e,
               })
             }
@@ -57,7 +79,10 @@ const SignIn = () => {
           />
 
           <Text className="text-xl text-center text-gray-100">
-            Don't have an account? <Link className="text-secondary-200" href="/sign-up">Signup</Link>
+            Don't have an account?{" "}
+            <Link className="text-secondary-200" href="/sign-up">
+              Signup
+            </Link>
           </Text>
         </View>
       </ScrollView>

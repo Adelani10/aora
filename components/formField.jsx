@@ -21,7 +21,7 @@ const FormField = ({ title, value, handleChangeText, keyboardType }) => {
         {title === "Password" && (
           <TouchableOpacity
             onPress={() => setShowPassword(!showPassword)}
-            className="absolute self-end bottom-4 "
+            className="absolute self-end bottom-3 "
           >
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}

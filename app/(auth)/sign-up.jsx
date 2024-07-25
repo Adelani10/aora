@@ -1,16 +1,37 @@
-import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  Alert,
+} from "react-native";
 import React from "react";
 import FormField from "../../components/formField";
 import { images } from "../../constants";
 import { useState } from "react";
 import CustomButton from "../../components/customButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { createUser } from "../../lib/appwrite";
 
 const SignUp = () => {
-  const [value, setValue] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = async () => {};
+  const submit = async () => {
+    if (!form.username || !form.email || !form.password) {
+      Alert.alert("Error", "Please fill in all the fields");
+    }
+    setIsSubmitting(true);
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  };
   return (
     <SafeAreaView className="bg-primary h-full justify-center items-start">
       <ScrollView className="w-full">
@@ -27,10 +48,10 @@ const SignUp = () => {
 
           <FormField
             title="Username"
-            value={value.username}
+            value={form.username}
             handleChangeText={(e) =>
-              setValue({
-                ...value,
+              setForm({
+                ...form,
                 username: e,
               })
             }
@@ -39,10 +60,10 @@ const SignUp = () => {
 
           <FormField
             title="Email"
-            value={value.email}
+            value={form.email}
             handleChangeText={(e) =>
-              setValue({
-                ...value,
+              setForm({
+                ...form,
                 email: e,
               })
             }
@@ -51,10 +72,10 @@ const SignUp = () => {
 
           <FormField
             title="Password"
-            value={value.password}
+            value={form.password}
             handleChangeText={(e) =>
-              setValue({
-                ...value,
+              setForm({
+                ...form,
                 password: e,
               })
             }
@@ -69,7 +90,10 @@ const SignUp = () => {
           />
 
           <Text className="text-xl text-center text-gray-100">
-            Already have an account? <Link className="text-secondary-200" href="/sign-in">Login</Link>
+            Already have an account?{" "}
+            <Link className="text-secondary-200" href="/sign-in">
+              Login
+            </Link>
           </Text>
         </View>
       </ScrollView>
