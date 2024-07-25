@@ -4,11 +4,12 @@ import { images } from "../constants";
 import CustomButton from "../components/customButton";
 import { StatusBar } from "expo-status-bar";
 import { router, Redirect } from "expo-router";
-import { isLoading } from "expo-font";
-import { useState } from "react";
+import { useGlobalContext } from "../context/globalProvider";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const {isLoading, isLoggedIn} = useGlobalContext()
+
+  if(!isLoading && isLoggedIn) return <Redirect href="/home"/>
 
   return (
     <SafeAreaView className="bg-primary h-full">

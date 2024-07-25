@@ -24,7 +24,8 @@ const SignUp = () => {
     }
     setIsSubmitting(true);
     try {
-      const result = await createUser(form.email, form.password, form.username);
+      await createUser(form.email, form.password, form.username);
+      // const result = await createUser(form.email, form.password, form.username);
       router.replace("/home");
     } catch (error) {
       Alert.alert('Error', error.message)
@@ -55,7 +56,7 @@ const SignUp = () => {
                 username: e,
               })
             }
-            keyboardType={1}
+            placeholder="Enter a username"
           />
 
           <FormField
@@ -67,7 +68,7 @@ const SignUp = () => {
                 email: e,
               })
             }
-            keyboardType={1}
+            placeholder="Enter an email"
           />
 
           <FormField
@@ -79,7 +80,7 @@ const SignUp = () => {
                 password: e,
               })
             }
-            keyboardType={1}
+            placeholder="Enter a password"
           />
 
           <CustomButton

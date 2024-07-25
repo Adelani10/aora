@@ -24,7 +24,8 @@ const SignIn = () => {
     }
     setIsSubmitting(true);
     try {
-      const result = await signIn(form.email, form.password);
+      await signIn(form.email, form.password);
+      // const result = await signIn(form.email, form.password);
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message);
@@ -56,7 +57,7 @@ const SignIn = () => {
                 email: e,
               })
             }
-            keyboardType={1}
+            placeholder="Enter your email"
           />
 
           <FormField
@@ -68,7 +69,7 @@ const SignIn = () => {
                 password: e,
               })
             }
-            keyboardType={1}
+            placeholder="Enter your password"
           />
 
           <CustomButton
