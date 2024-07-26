@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "package": "com.jsm.aora"
+      "package": "com.delani.aora"
     },
     "android": {
       "adaptiveIcon": {

@@ -19,18 +19,18 @@ const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = async () => {
-    if (!form.username || !form.email || !form.password) {
+    if (form.username === "" || form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all the fields");
     }
     setIsSubmitting(true);
     try {
-      await createUser(form.email, form.password, form.username);
-      // const result = await createUser(form.email, form.password, form.username);
+      // await createUser(form.email, form.password, form.username);
+      const result = await createUser(form.email, form.password, form.username);
       router.replace("/home");
     } catch (error) {
-      Alert.alert('Error', error.message)
+      Alert.alert("Error", error.message +  "gameeee");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   };
   return (
