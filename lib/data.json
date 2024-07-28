@@ -1,0 +1,80 @@
+[
+  {
+    "$collectionId": "669ab7bb001f3af78d07",
+    "$createdAt": "2024-07-27T20:25:21.714+00:00",
+    "$databaseId": "669ab74e0034b5ebef73",
+    "$id": "66a557b1000a3b5d6638",
+    "$permissions": [],
+    "$tenant": "171297",
+    "$updatedAt": "2024-07-27T20:25:21.714+00:00",
+    "creator": {
+      "$collectionId": "669ab78f0004c3384c87",
+      "$createdAt": "2024-07-26T19:13:03.587+00:00",
+      "$databaseId": "669ab74e0034b5ebef73",
+      "$id": "66a3f53f8e7e408b5238",
+      "$permissions": [],
+      "$tenant": "171297",
+      "$updatedAt": "2024-07-26T19:13:03.587+00:00",
+      "accountId": "66a3f53d8ec516603e76",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=ade&project=669ab5240026cc469c24",
+      "email": "adelani1088@gmail.com",
+      "username": "ade"
+    },
+    "prompt": "Create a motivating AI driven video aimed at inspiring coding enthusiasts with simple language",
+    "thumbnail": "https://i.ibb.co/tJBcX20/Appwrite-video.png",
+    "title": "Get inspired to code",
+    "video": "https://player.vimeo.com/video/949579770?h=897cd5e781"
+  },
+  {
+    "$collectionId": "669ab7bb001f3af78d07",
+    "$createdAt": "2024-07-27T20:26:58.761+00:00",
+    "$databaseId": "669ab74e0034b5ebef73",
+    "$id": "66a55812000e886a6031",
+    "$permissions": [],
+    "$tenant": "171297",
+    "$updatedAt": "2024-07-27T20:26:58.761+00:00",
+    "creator": {
+      "$collectionId": "669ab78f0004c3384c87",
+      "$createdAt": "2024-07-26T19:13:03.587+00:00",
+      "$databaseId": "669ab74e0034b5ebef73",
+      "$id": "66a3f53f8e7e408b5238",
+      "$permissions": [],
+      "$tenant": "171297",
+      "$updatedAt": "2024-07-26T19:13:03.587+00:00",
+      "accountId": "66a3f53d8ec516603e76",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=ade&project=669ab5240026cc469c24",
+      "email": "adelani1088@gmail.com",
+      "username": "ade"
+    },
+    "prompt": "Picture the future of coding with AI. Show AR VR",
+    "thumbnail": "https://i.ibb.co/Xkgk7DY/Video.png",
+    "title": "How AI Shapes Coding Future",
+    "video": "https://player.vimeo.com/video/949581999?h=4672125b31"
+  },
+  {
+    "$collectionId": "669ab7bb001f3af78d07",
+    "$createdAt": "2024-07-27T20:28:44.252+00:00",
+    "$databaseId": "669ab74e0034b5ebef73",
+    "$id": "66a5587b00336f8a73d0",
+    "$permissions": [],
+    "$tenant": "171297",
+    "$updatedAt": "2024-07-27T20:28:44.252+00:00",
+    "creator": {
+      "$collectionId": "669ab78f0004c3384c87",
+      "$createdAt": "2024-07-26T19:13:03.587+00:00",
+      "$databaseId": "669ab74e0034b5ebef73",
+      "$id": "66a3f53f8e7e408b5238",
+      "$permissions": [],
+      "$tenant": "171297",
+      "$updatedAt": "2024-07-26T19:13:03.587+00:00",
+      "accountId": "66a3f53d8ec516603e76",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=ade&project=669ab5240026cc469c24",
+      "email": "adelani1088@gmail.com",
+      "username": "ade"
+    },
+    "prompt": "Create a heartwarming video following the travels of dalmatian dog exploring beautiful Italy",
+    "thumbnail": "https://i.ibb.co/CBYzyKh/Video-1.png",
+    "title": "Dalmatian's journey through Italy",
+    "video": "https://player.vimeo.com/video/949582778?h=d60220d68d"
+  }
+]

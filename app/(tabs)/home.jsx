@@ -1,29 +1,48 @@
-import { View, Text, SafeAreaView, FlatList, Image, RefreshControl } from "react-native";
-import React, { useState } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  Image,
+  RefreshControl,
+  Alert,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import { images } from "../../constants";
 import SearchInput from "../../components/searchInput";
 import Trending from "../../components/trending";
 import EmptyState from "../../components/emptyState";
+import { getAllPosts } from "../../lib/appwrite";
+import { useAppwrite } from "../../lib/useAppwrite";
+import VideoCard from "../../components/videoCard";
 
 const Home = () => {
   const [value, setValue] = useState("");
-  const [refreshing, setRefreshing] = useState("")
+  const [refreshing, setRefreshing] = useState("");
+  const { data: posts } = useAppwrite(getAllPosts);
 
   const search = async () => {};
 
-
   const onRefresh = async () => {
-    setRefreshing(true)
-// Refresh to see if there's a new vid
-    setRefreshing(false)
-  }
+    setRefreshing(true);
+    // Refresh to see if there's a new vid
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full w-full border ">
       <FlatList
-        data={[]}
+        data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={() => {}}
+        renderItem={({ item }) => {
+          <VideoCard
+            video={item.video}
+            title={item.title}
+            creator={item.creator.username}
+            thumbnail={item.thumbnail}
+            avatar={item.creator.avatar}
+          />;
+        }}
         ListHeaderComponent={() => {
           return (
             <View className="p-4">
@@ -52,14 +71,17 @@ const Home = () => {
                 handlePress={search}
               />
 
-              <Trending posts={ []} />
+              <Trending posts={[]} />
             </View>
           );
         }}
         ListEmptyComponent={() => {
           return (
-            <EmptyState title="Empty" subtitle="This state is empty." />
-          )
+            <EmptyState
+              title="No Videos Found"
+              subtitle="No videos have been created yet!"
+            />
+          );
         }}
         // horizontal
         refreshControl={

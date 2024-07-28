@@ -1,5 +1,6 @@
 import { View, Text, FlatList } from "react-native";
 import React from "react";
+import EmptyState from "./emptyState";
 
 const Trending = ({posts}) => {
   return (
@@ -18,7 +19,9 @@ const Trending = ({posts}) => {
             <Text className="text-white">{item.item}</Text>
           </View>
         )}
-        ListEmptyComponent={() => {}}
+        ListEmptyComponent={() => {
+          
+        }}
         horizontal
       />
     </View>
