@@ -13,7 +13,7 @@ const SearchInput = ({
     <View className="space-y-2 w-full mt-8">
       <View className="relative flex justify-center h-14">
         <TextInput
-          className="h-full placeholder-white focus:border-secondary-100 focus:border text-white text-2xl px-3 rounded-lg w-full bg-black-200"
+          className="h-full placeholder-white focus:border-secondary-100 focus:border text-white text-lg px-3 rounded-lg w-full bg-black-200"
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#f5f5f5"
