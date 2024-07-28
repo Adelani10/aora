@@ -15,6 +15,7 @@ import EmptyState from "../../components/emptyState";
 import { getAllPosts } from "../../lib/appwrite";
 import { useAppwrite } from "../../lib/useAppwrite";
 import VideoCard from "../../components/videoCard";
+// import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
   const [value, setValue] = useState("");
@@ -34,15 +35,15 @@ const Home = () => {
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => {
+        renderItem={({ item }) => (
           <VideoCard
             video={item.video}
             title={item.title}
             creator={item.creator.username}
             thumbnail={item.thumbnail}
             avatar={item.creator.avatar}
-          />;
-        }}
+          />
+        )}
         ListHeaderComponent={() => {
           return (
             <View className="p-4">
@@ -88,6 +89,8 @@ const Home = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       />
+
+      {/* <StatusBar /> */}
     </SafeAreaView>
   );
 };
