@@ -27,16 +27,18 @@ const Index = () => {
             resizeMode="contain"
           />
 
-          <View className="items-center  justify-center gap-y-2 my-2">
-            <Text className="text-4xl font-bold text-center relative bottom-0 right-0 text-white">
-              Discover Endless Possibilities with{" "}
-              <Text className="text-secondary-200">Aora</Text>
+          <View className="items-center justify-center gap-y-2 my-2">
+            <View className="relative">
+              <Text className="text-4xl font-semibold relative text-center text-white">
+                Discover Endless Possibilities with{" "}
+                <Text className="text-secondary-200">Aora</Text>
+              </Text>
               <Image
                 source={images.path}
-                className="absolute h-2"
-                resizeMode="contain"
+                className="absolute right-0 bottom-0 w-16 h-2 "
+                resizeMode=""
               />
-            </Text>
+            </View>
 
             <Text className="text-sm text-center text-gray-100">
               Where creativity Meets Innovation: Embark on a Journey of

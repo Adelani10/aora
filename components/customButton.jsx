@@ -11,7 +11,7 @@ const CustomButton = ({ title, handlePress, otherStyles, isLoading }) => {
       disabled={isLoading}
       className={`bg-secondary ${otherStyles} justify-center flex items-center h-16 text-black-100 w-full mt-7 rounded-lg border`}
     >
-      <Text className="  tracking-wider first-letter text-2xl">{title}</Text>
+      <Text className=" font-bold first-letter text-2xl">{title}</Text>
     </TouchableOpacity>
   );
 };

@@ -19,8 +19,6 @@ const Search = () => {
   const [refreshing, setRefreshing] = useState("");
   const { data: posts, refetch } = useAppwrite(() => searchPosts(query));
 
-  const search = async () => {};
-
   useEffect(() => {
     refetch();
   }, [query]);
@@ -56,7 +54,6 @@ const Search = () => {
               <SearchInput
                 handleChangeText={(e) => setValue(e)}
                 placeholder={query}
-                // handlePress={search}
                 initialQuery={query}
               />
             </View>

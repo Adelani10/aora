@@ -5,7 +5,6 @@ import {
   FlatList,
   Image,
   RefreshControl,
-  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { images } from "../../constants";
@@ -17,12 +16,14 @@ import { useAppwrite } from "../../lib/useAppwrite";
 import VideoCard from "../../components/videoCard";
 // import { StatusBar } from "expo-status-bar";
 import { getLatestPosts } from "../../lib/appwrite";
+import { useGlobalContext } from "../../context/globalProvider";
 
 const Home = () => {
   const [value, setValue] = useState("");
   const [refreshing, setRefreshing] = useState("");
   const { data: posts } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
+  const {user} = useGlobalContext()
 
   const search = async () => {};
 
@@ -55,7 +56,7 @@ const Home = () => {
                     Welcome Back,
                   </Text>
                   <Text className="text-4xl font-semibold text-white">
-                    delani
+                    {user?.username}
                   </Text>
                 </View>
 
