@@ -5,7 +5,7 @@ import { icons } from "../../constants";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View>
+    <View className="flex items-center justify-center gap-1">
       <Image
         source={icon}
         resizeMode="contain"
@@ -14,7 +14,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
       />
 
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
+        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs text-white`}
       >
         {name}
       </Text>
@@ -46,7 +46,7 @@ const LayOut = () => {
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.home}
-                colour={color}
+                color={color}
                 name="Home"
                 focused={focused}
               />
@@ -61,8 +61,8 @@ const LayOut = () => {
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.bookmark}
-                colour={color}
-                name="bookmark"
+                color={color}
+                name="Bookmark"
                 focused={focused}
               />
             ),
@@ -75,9 +75,9 @@ const LayOut = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.create}
-                colour={color}
-                name="create"
+                icon={icons.upload}
+                color={color}
+                name="Create"
                 focused={focused}
               />
             ),
@@ -91,8 +91,8 @@ const LayOut = () => {
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.profile}
-                colour={color}
-                name="profile"
+                color={color}
+                name="Profile"
                 focused={focused}
               />
             ),

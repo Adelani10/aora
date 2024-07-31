@@ -16,11 +16,13 @@ import { getAllPosts } from "../../lib/appwrite";
 import { useAppwrite } from "../../lib/useAppwrite";
 import VideoCard from "../../components/videoCard";
 // import { StatusBar } from "expo-status-bar";
+import { getLatestPosts } from "../../lib/appwrite";
 
 const Home = () => {
   const [value, setValue] = useState("");
   const [refreshing, setRefreshing] = useState("");
   const { data: posts } = useAppwrite(getAllPosts);
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
 
   const search = async () => {};
 
@@ -72,7 +74,15 @@ const Home = () => {
                 handlePress={search}
               />
 
-              <Trending posts={[]} />
+              <View className="w-full flex-1">
+                <Trending posts={latestPosts ?? []} />
+              </View>
+
+              <View className="w-full flex-1 pt-5">
+                <Text className="text-sm font-pregular text-gray-100">
+                  Latest Videos
+                </Text>
+              </View>
             </View>
           );
         }}

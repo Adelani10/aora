@@ -1,17 +1,20 @@
 import { View, Text, Image } from "react-native";
 import React, { useState } from "react";
-import { icons, images } from "../constants";
+import { icons, videos } from "../constants";
 import { TouchableOpacity } from "react-native";
+import { Video, ResizeMode } from "expo-av";
+// import videos from "../constants";
 
 const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
   const [play, setPlay] = useState(false);
+
   return (
     <View className="mb-6 w-full gap-y-4 px-4">
       <View className="flex w-full flex-row justify-between items-start">
         <View className="flex flex-row gap-x-2 ">
           <View className="border border-secondary-100 h-12 rounded-lg w-12">
             <Image
-              source={{uri: avatar}}
+              source={{ uri: avatar }}
               className="h-full rounded-lg w-full"
               resizeMode="contain"
             />
@@ -32,10 +35,26 @@ const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
         </View>
       </View>
 
-      {play === false && (
+      {play === true ? (
+        <Video
+          source={{
+            uri: video,
+          }}
+          className="rounded-lg"
+          resizeMode={ResizeMode.CONTAIN}
+          shouldPlay
+          useNativeControls
+          onPlaybackStatusUpdate={(status) => {
+            if (status.didJustFinish) {
+              setPlay(false);
+            }
+          }}
+          onError={(error) => console.log(error)}
+        />
+      ) : (
         <View className="w-full border flex justify-center items-center rounded-xl relative h-56">
           <Image
-            source={{uri: thumbnail}}
+            source={{ uri: thumbnail }}
             className="w-full h-full rounded-xl "
             resizeMode="cover"
           />
