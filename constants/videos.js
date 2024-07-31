@@ -1,3 +1,3 @@
-import ai from "../assets/videos/ai.mp4"
+import ai from "../assets/videos/workWithAi.mp4";
 
-export default {ai}
+export default { ai };

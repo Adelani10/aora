@@ -1,15 +1,15 @@
 import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
 import React from "react";
-import { images } from "../constants";
+import { icons, images } from "../constants";
 import CustomButton from "../components/customButton";
 import { StatusBar } from "expo-status-bar";
 import { router, Redirect } from "expo-router";
 import { useGlobalContext } from "../context/globalProvider";
 
 const Index = () => {
-  const {isLoading, isLoggedIn} = useGlobalContext()
+  const { isLoading, isLoggedIn } = useGlobalContext();
 
-  if(!isLoading && isLoggedIn) return <Redirect href="/home"/>
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -26,6 +26,23 @@ const Index = () => {
             className="max-w-[380px] w-full h-[35vh]"
             resizeMode="contain"
           />
+
+          <View className="items-center  justify-center gap-y-2 my-2">
+            <Text className="text-4xl font-bold text-center relative bottom-0 right-0 text-white">
+              Discover Endless Possibilities with{" "}
+              <Text className="text-secondary-200">Aora</Text>
+              <Image
+                source={images.path}
+                className="absolute h-2"
+                resizeMode="contain"
+              />
+            </Text>
+
+            <Text className="text-sm text-center text-gray-100">
+              Where creativity Meets Innovation: Embark on a Journey of
+              Limitless Exploration with Aora
+            </Text>
+          </View>
 
           <CustomButton
             title="Continue with Email"

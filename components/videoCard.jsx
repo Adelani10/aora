@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { icons, videos } from "../constants";
 import { TouchableOpacity } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-// import videos from "../constants";
 
 const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
   const [play, setPlay] = useState(false);
@@ -37,9 +36,7 @@ const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
 
       {play === true ? (
         <Video
-          source={{
-            uri: video,
-          }}
+          source={{uri: video}}
           className="rounded-lg"
           resizeMode={ResizeMode.CONTAIN}
           shouldPlay
