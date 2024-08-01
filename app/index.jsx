@@ -36,7 +36,7 @@ const Index = () => {
               <Image
                 source={images.path}
                 className="absolute right-0 bottom-0 w-16 h-2 "
-                resizeMode=""
+                resizeMode="contain"
               />
             </View>
 

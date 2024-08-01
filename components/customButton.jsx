@@ -9,9 +9,9 @@ const CustomButton = ({ title, handlePress, otherStyles, isLoading }) => {
       activeOpacity={0.7}
       onPress={handlePress}
       disabled={isLoading}
-      className={`bg-secondary ${otherStyles} justify-center flex items-center h-16 text-black-100 w-full mt-7 rounded-lg border`}
+      className={`bg-secondary ${otherStyles} justify-center flex items-center h-14 w-full mt-7 rounded-lg border`}
     >
-      <Text className=" font-bold first-letter text-2xl">{title}</Text>
+      <Text className=" font-semibold text-black-100 first-letter text-2xl">{title}</Text>
     </TouchableOpacity>
   );
 };

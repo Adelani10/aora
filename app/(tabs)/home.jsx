@@ -21,15 +21,15 @@ import { useGlobalContext } from "../../context/globalProvider";
 const Home = () => {
   const [value, setValue] = useState("");
   const [refreshing, setRefreshing] = useState("");
-  const { data: posts } = useAppwrite(getAllPosts);
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
-  const {user} = useGlobalContext()
+  const { user } = useGlobalContext();
 
   const search = async () => {};
 
   const onRefresh = async () => {
     setRefreshing(true);
-    // Refresh to see if there's a new vid
+    await refetch()
     setRefreshing(false);
   };
 
@@ -95,7 +95,6 @@ const Home = () => {
             />
           );
         }}
-        // horizontal
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }

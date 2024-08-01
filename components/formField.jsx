@@ -13,15 +13,15 @@ const FormField = ({
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View className="space-y-2 w-full mb-2  mt-6">
-      <Text className="text-gray-100 text-2xl">{title}</Text>
+      <Text className="text-gray-100 text-xl">{title}</Text>
 
       <View className="relative flex justify-center h-14">
         <TextInput
-          className="h-full focus:border-secondary-100 focus:border text-white text-2xl px-3 rounded-lg w-full bg-black-200"
+          className="h-full focus:border-secondary-100 focus:border text-white text-lg bg-black-200 px-3 rounded-lg w-full"
           value={value}
           placeholder={placeholder}
           TextColor="#7B7B8B"
-          placeholderTextColor="#f5f5f5"
+          placeholderTextColor="#7B7B8B"
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
           {...props}
