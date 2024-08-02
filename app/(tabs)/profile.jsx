@@ -1,30 +1,23 @@
-import { View, Text, SafeAreaView, FlatList, RefreshControl } from "react-native";
-import React, { useEffect, useState } from "react";
+import { FlatList } from "react-native";
 import { useAppwrite } from "../../lib/useAppwrite";
-import { StatusBar } from "expo-status-bar";
 import EmptyState from "../../components/emptyState";
 import { getUserPosts, signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/globalProvider";
 import InfoBox from "../../components/infoBox";
 import VideoCard from "../../components/videoCard";
 import { router } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
-  const [refreshing, setRefreshing] = useState("");
-  const {user, setUser, setIsLoggedIn} = useGlobalContext()
-  const { data: posts, refetch } = useAppwrite(() => getUserPosts(user.$id));
-
-
-  useEffect(() => {
-    refetch();
-  }, []);
+  const { user, setUser, setIsLoggedIn } = useGlobalContext();
+  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
   const logOut = async () => {
-    await signOut()
-    setUser(null)
-    setIsLoggedIn(false)
-    router.replace('/sign-in')
-  }
+    await signOut();
+    setUser(null);
+    setIsLoggedIn(false);
+    router.replace("/sign-in");
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full w-full">
@@ -41,9 +34,7 @@ const Profile = () => {
           />
         )}
         ListHeaderComponent={() => {
-          return (
-            <InfoBox handlePress={logOut}  />
-          );
+          return <InfoBox handlePress={logOut} />;
         }}
         ListEmptyComponent={() => {
           return (
@@ -53,11 +44,7 @@ const Profile = () => {
             />
           );
         }}
-        // horizontal
-        refreshControl={<RefreshControl refreshing={refreshing} />}
       />
-
-      <StatusBar />
     </SafeAreaView>
   );
 };

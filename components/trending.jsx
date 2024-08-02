@@ -6,13 +6,13 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import { icons } from "../constants";
 import { Video, ResizeMode } from "expo-av";
 
-const zoomIn = { 0: { scale: 0.9 }, 1: { scale: 1.1 } };
-const zoomOut = { 0: { scale: 1 }, 1: { scale: 0.9 } };
+const zoomIn = { 0: { scale: 0.8 }, 1: { scale: 1 } };
+const zoomOut = { 0: { scale: 1 }, 1: { scale: 0.8 } };
 
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
@@ -20,12 +20,12 @@ const TrendingItem = ({ activeItem, item }) => {
   return (
     <Animatable.View
       className=""
-      animation={activeItem === item ? zoomIn : zoomOut}
+      animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
     >
       {play === false ? (
         <TouchableOpacity
-          className="h-64 w-40 rounded-2xl bg-gray-100 border flex justify-center items-center"
+          className="h-64 w-40 rounded-2xl bg-gray-100 flex justify-center items-center"
           onPress={() => setPlay(true)}
         >
           <ImageBackground
@@ -43,7 +43,7 @@ const TrendingItem = ({ activeItem, item }) => {
       ) : (
         <Video
           source={{ uri: item.video }}
-          className="rounded-lg"
+          className="rounded-lg w-40 border h-64"
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay

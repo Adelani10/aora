@@ -1,35 +1,24 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  Image,
-  RefreshControl,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Image, RefreshControl } from "react-native";
+import { useState } from "react";
 import { images } from "../../constants";
 import SearchInput from "../../components/searchInput";
 import Trending from "../../components/trending";
 import EmptyState from "../../components/emptyState";
-import { getAllPosts } from "../../lib/appwrite";
 import { useAppwrite } from "../../lib/useAppwrite";
 import VideoCard from "../../components/videoCard";
-// import { StatusBar } from "expo-status-bar";
-import { getLatestPosts } from "../../lib/appwrite";
+import { getLatestPosts, getAllPosts } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/globalProvider";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = () => {
-  const [value, setValue] = useState("");
   const [refreshing, setRefreshing] = useState("");
   const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
   const { user } = useGlobalContext();
 
-  const search = async () => {};
-
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch()
+    await refetch();
     setRefreshing(false);
   };
 
@@ -62,18 +51,12 @@ const Home = () => {
 
                 <Image
                   source={images.logoSmall}
-                  className="w-16 h-16"
+                  className="w-14 h-14"
                   resizeMode="contain"
                 />
               </View>
 
-              <SearchInput
-                title="search videos"
-                value={value}
-                handleChangeText={(e) => setValue(e)}
-                placeholder="Search for a video topic"
-                handlePress={search}
-              />
+              <SearchInput />
 
               <View className="w-full flex-1">
                 <Trending posts={latestPosts ?? []} />
@@ -99,8 +82,6 @@ const Home = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       />
-
-      {/* <StatusBar /> */}
     </SafeAreaView>
   );
 };

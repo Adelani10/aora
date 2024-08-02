@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  RefreshControl,
-} from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { searchPosts } from "../../lib/appwrite";
@@ -12,11 +6,10 @@ import { useAppwrite } from "../../lib/useAppwrite";
 import SearchInput from "../../components/searchInput";
 import EmptyState from "../../components/emptyState";
 import VideoCard from "../../components/videoCard";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
   const { query } = useLocalSearchParams();
-  const [value, setValue] = useState("");
-  const [refreshing, setRefreshing] = useState("");
   const { data: posts, refetch } = useAppwrite(() => searchPosts(query));
 
   useEffect(() => {
@@ -51,11 +44,7 @@ const Search = () => {
                 </View>
               </View>
 
-              <SearchInput
-                handleChangeText={(e) => setValue(e)}
-                placeholder={query}
-                initialQuery={query}
-              />
+              <SearchInput refetch={refetch} initialQuery={query} />
             </View>
           );
         }}
@@ -67,8 +56,6 @@ const Search = () => {
             />
           );
         }}
-        // horizontal
-        refreshControl={<RefreshControl refreshing={refreshing} />}
       />
 
       {/* <StatusBar /> */}

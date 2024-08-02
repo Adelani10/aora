@@ -1,13 +1,12 @@
 import {
   View,
   Text,
-  SafeAreaView,
-  ScrollView,
   TouchableOpacity,
   Image,
   Alert,
+  ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import FormField from "../../components/formField";
 import { ResizeMode, Video } from "expo-av";
 import { icons } from "../../constants";
@@ -16,6 +15,7 @@ import * as ImagePicker from "expo-image-picker";
 import { createVideo } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/globalProvider";
 import { router } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Create = () => {
   const [uploading, setUploading] = useState(false);
@@ -26,7 +26,6 @@ const Create = () => {
     prompt: "",
   });
   const { user } = useGlobalContext();
-
 
   const openPicker = async (selectType) => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -104,6 +103,7 @@ const Create = () => {
                   source={{ uri: form.video.uri }}
                   className="w-full h-full rounded-lg"
                   resizeMode={ResizeMode.COVER}
+                  // shouldPlay
                 />
               ) : (
                 <TouchableOpacity

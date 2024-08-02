@@ -1,7 +1,6 @@
-import { View, Text, Image } from "react-native";
-import React, { useState } from "react";
-import { icons, videos } from "../constants";
-import { TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import { icons } from "../constants";
 import { Video, ResizeMode } from "expo-av";
 
 const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
@@ -34,10 +33,10 @@ const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
         </View>
       </View>
 
-      {play === true ? (
+      {play ? (
         <Video
-          source={{uri: video}}
-          className="rounded-lg"
+          source={{ uri: video }}
+          className="rounded-lg w-full border h-56"
           resizeMode={ResizeMode.CONTAIN}
           shouldPlay
           useNativeControls
@@ -49,7 +48,7 @@ const VideoCard = ({ title, thumbnail, video, creator, avatar }) => {
           onError={(error) => console.log(error)}
         />
       ) : (
-        <View className="w-full border flex justify-center items-center rounded-xl relative h-56">
+        <View className="w-full flex justify-center items-center rounded-xl relative h-56">
           <Image
             source={{ uri: thumbnail }}
             className="w-full h-full rounded-xl "
